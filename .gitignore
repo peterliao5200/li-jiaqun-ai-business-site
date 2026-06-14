@@ -2,3 +2,6 @@
 server.err.log
 .DS_Store
 Thumbs.db
+assets/*
+!assets/
+!assets/li-jiaqun-home.png
