@@ -1,0 +1,1005 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>李家群｜AI 年度計畫與公司經營教學</title>
+  <meta name="description" content="李家群 AI 經營教學網頁，協助企業用 AI 落實年度計畫、經營會議、KPI 追蹤與管理制度。">
+  <style>
+    :root {
+      --walnut: #3d2418;
+      --walnut-deep: #24140e;
+      --oak: #f2eadb;
+      --oak-strong: #dfc7a2;
+      --forest: #1f4a37;
+      --forest-dark: #153526;
+      --ink: #231f1a;
+      --muted: #6f665a;
+      --line: #ded4c2;
+      --white: #fffaf1;
+      --plain-white: #ffffff;
+      --shadow: 0 18px 42px rgba(36, 20, 14, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+      line-height: 1.7;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      background: rgba(255, 250, 241, 0.92);
+      border-bottom: 1px solid rgba(61, 36, 24, 0.12);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(1120px, calc(100% - 40px));
+      min-height: 74px;
+      margin: 0 auto;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--walnut);
+      font-size: 1rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      color: var(--plain-white);
+      background: var(--forest);
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--walnut);
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+
+    .nav-links a {
+      padding: 10px 12px;
+      border-radius: 6px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(31, 74, 55, 0.1);
+      outline: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: grid;
+      align-items: center;
+      padding: 136px 24px 78px;
+      color: var(--plain-white);
+      background: url("assets/li-jiaqun-home.png") right 12% center / min(48vw, 560px) auto no-repeat, var(--walnut-deep);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(36, 20, 14, 0.92), rgba(36, 20, 14, 0.74) 48%, rgba(21, 53, 38, 0.54)),
+        linear-gradient(135deg, rgba(223, 199, 162, 0.18), transparent 48%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--forest);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .hero .eyebrow {
+      color: var(--oak-strong);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin-bottom: 22px;
+      font-size: clamp(2.55rem, 7vw, 5.1rem);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-bottom: 16px;
+      color: var(--walnut);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.24;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      color: var(--walnut);
+      font-size: 1.32rem;
+      line-height: 1.35;
+    }
+
+    h4 {
+      color: var(--forest-dark);
+      font-size: 1.02rem;
+    }
+
+    .hero-copy {
+      max-width: 660px;
+      margin-bottom: 34px;
+      color: rgba(255, 250, 241, 0.9);
+      font-size: 1.18rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 22px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .btn.primary {
+      color: var(--plain-white);
+      background: var(--forest);
+      box-shadow: 0 12px 26px rgba(15, 40, 28, 0.24);
+    }
+
+    .btn.primary:hover,
+    .btn.primary:focus-visible {
+      background: var(--forest-dark);
+    }
+
+    .btn.secondary {
+      color: var(--plain-white);
+      border-color: rgba(255, 250, 241, 0.72);
+      background: rgba(255, 250, 241, 0.08);
+    }
+
+    .section {
+      padding: 92px 24px;
+    }
+
+    .section-heading {
+      width: min(780px, 100%);
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-heading p:not(.eyebrow) {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .align-left {
+      margin: 0;
+      text-align: left;
+    }
+
+    .feature-grid,
+    .course-layout,
+    .roadmap-grid,
+    .profile-layout,
+    .system-grid {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .feature-grid,
+    .system-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .feature-card,
+    .system-card,
+    .profile-card,
+    .experience-card,
+    .roadmap-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--plain-white);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card,
+    .system-card,
+    .roadmap-card {
+      padding: 30px;
+    }
+
+    .line-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 18px;
+      border: 2px solid var(--forest);
+      border-radius: 50%;
+      color: var(--forest);
+      font-weight: 900;
+    }
+
+    .feature-card p,
+    .system-card p,
+    .course-card p,
+    .profile-card p,
+    .experience-card li,
+    .roadmap-card p,
+    .roadmap-card li {
+      color: var(--muted);
+    }
+
+    .course-section {
+      background: #ece0ce;
+    }
+
+    .course-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.5fr);
+      align-items: start;
+      gap: 46px;
+    }
+
+    .course-card {
+      padding: 34px;
+      border-radius: 8px;
+      background: var(--plain-white);
+      box-shadow: var(--shadow);
+    }
+
+    .course-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .course-label {
+      margin-bottom: 8px;
+      color: var(--forest);
+      font-size: 0.88rem;
+      font-weight: 900;
+    }
+
+    .price {
+      min-width: 160px;
+      text-align: right;
+    }
+
+    .price span,
+    .course-info span,
+    .contact-note span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+
+    .price strong {
+      color: var(--walnut);
+      font-size: 1.5rem;
+    }
+
+    .course-info {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 26px 0;
+    }
+
+    .course-info div,
+    .schedule-card,
+    .teaching-points,
+    .design-note {
+      border-radius: 8px;
+      background: #fffdf8;
+    }
+
+    .course-info div,
+    .schedule-card {
+      padding: 20px;
+      border: 1px solid var(--line);
+    }
+
+    .teaching-points,
+    .design-note {
+      margin: 0 0 24px;
+      padding: 22px;
+      border: 1px solid rgba(31, 74, 55, 0.18);
+      border-left: 4px solid var(--forest);
+    }
+
+    .teaching-points ul,
+    .design-note ul,
+    .system-card ul,
+    .experience-card ul,
+    .roadmap-card ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .teaching-points ul {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 18px;
+      color: var(--ink);
+    }
+
+    .schedule-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .schedule-card h4 {
+      margin-bottom: 14px;
+    }
+
+    .schedule-card dl {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .schedule-card div {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 12px;
+    }
+
+    .schedule-card dt {
+      color: var(--forest);
+      font-weight: 900;
+    }
+
+    .schedule-card dd {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .system-section {
+      background: var(--white);
+    }
+
+    .roadmap-section {
+      background: linear-gradient(135deg, rgba(223, 199, 162, 0.28), rgba(31, 74, 55, 0.08));
+    }
+
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .roadmap-card span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 14px;
+      border-radius: 50%;
+      color: var(--plain-white);
+      background: var(--forest);
+      font-weight: 900;
+    }
+
+    .profile-section {
+      background: #ece0ce;
+    }
+
+    .profile-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.25fr);
+      gap: 44px;
+      align-items: start;
+    }
+
+    .profile-card {
+      overflow: hidden;
+    }
+
+    .profile-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .profile-body {
+      padding: 24px;
+    }
+
+    .identity-list {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .identity-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .identity-list strong {
+      color: var(--walnut);
+      white-space: nowrap;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .experience-card {
+      padding: 24px;
+    }
+
+    .booking-section {
+      background: var(--forest-dark);
+      color: var(--plain-white);
+    }
+
+    .booking-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.25fr);
+      gap: 48px;
+      align-items: start;
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .booking-copy h2,
+    .booking-copy .eyebrow {
+      color: var(--plain-white);
+    }
+
+    .booking-copy p {
+      color: rgba(255, 250, 241, 0.78);
+    }
+
+    .contact-note {
+      display: grid;
+      gap: 6px;
+      margin-top: 30px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 250, 241, 0.25);
+    }
+
+    .contact-note span {
+      color: var(--oak-strong);
+    }
+
+    .contact-note strong {
+      margin-bottom: 10px;
+      color: var(--plain-white);
+    }
+
+    .booking-panel {
+      padding: 30px;
+      border-radius: 8px;
+      background: var(--plain-white);
+      color: var(--ink);
+      box-shadow: 0 26px 54px rgba(0, 0, 0, 0.18);
+    }
+
+    .booking-panel ul {
+      display: grid;
+      gap: 12px;
+      margin: 0 0 24px;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+
+    .site-footer {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 22px;
+      padding: 26px max(24px, calc((100% - 1120px) / 2));
+      color: rgba(255, 250, 241, 0.82);
+      background: var(--walnut-deep);
+    }
+
+    .site-footer div,
+    .site-footer nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .site-footer strong {
+      color: var(--plain-white);
+    }
+
+    .site-footer a {
+      color: var(--oak-strong);
+      font-weight: 800;
+    }
+
+    @media (max-width: 860px) {
+      .nav-wrap {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 4px;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .nav-links a {
+        padding: 8px 10px;
+      }
+
+      .hero {
+        min-height: 86vh;
+        padding-top: 150px;
+        background-size: 68vw auto;
+        background-position: right -8vw bottom 24px;
+      }
+
+      .feature-grid,
+      .course-layout,
+      .booking-layout,
+      .profile-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .system-grid,
+      .roadmap-grid,
+      .experience-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-wrap {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .brand span {
+        font-size: 0.95rem;
+      }
+
+      .nav-links {
+        font-size: 0.88rem;
+      }
+
+      .section {
+        padding: 68px 18px;
+      }
+
+      .hero {
+        min-height: 88vh;
+        padding: 142px 18px 62px;
+        background-size: 90vw auto;
+        background-position: right -24vw bottom 0;
+      }
+
+      .hero-actions,
+      .btn {
+        width: 100%;
+      }
+
+      .feature-grid,
+      .system-grid,
+      .roadmap-grid,
+      .experience-grid,
+      .course-info,
+      .teaching-points ul,
+      .schedule-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .course-card,
+      .feature-card,
+      .system-card,
+      .booking-panel,
+      .experience-card,
+      .roadmap-card {
+        padding: 22px;
+      }
+
+      .course-top {
+        display: grid;
+      }
+
+      .price {
+        text-align: left;
+      }
+
+      .schedule-card div {
+        grid-template-columns: 56px 1fr;
+      }
+
+      .identity-list li {
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .site-footer {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-wrap" aria-label="主要導覽">
+      <a class="brand" href="#top" aria-label="回到首頁">
+        <span class="brand-mark">李</span>
+        <span>李家群 AI 經營教學</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">教學定位</a>
+        <a href="#course">課程內容</a>
+        <a href="#system">經營系統</a>
+        <a href="#profile">講師背景</a>
+        <a href="#booking">課程洽詢</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="李家群 AI 經營教學">
+      <div class="hero-content">
+        <p class="eyebrow">AI Business Management Training</p>
+        <h1>用 AI 落實公司年度計畫與公司經營</h1>
+        <p class="hero-copy">不是只教工具操作，而是把 AI 接到年度目標、部門計畫、經營會議、KPI 追蹤與日常管理，讓策略能被拆解、被執行、被檢討。</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#course">了解教學內容</a>
+          <a class="btn secondary" href="#profile">查看講師背景</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">About Training</p>
+        <h2>把 AI 變成企業經營制度，而不是一次性的工具示範</h2>
+        <p>這個教學頁面以企業主管與經營幕僚為主要對象，重點放在年度計畫如何拆解、經營資料如何追蹤、會議如何產出決策，以及 AI 如何成為管理流程的一部分。</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <span class="line-icon" aria-hidden="true">01</span>
+          <h3>年度計畫落地</h3>
+          <p>把年度目標轉成策略主題、部門行動、月度里程碑與檢討表，避免年度計畫只停留在簡報。</p>
+        </article>
+        <article class="feature-card">
+          <span class="line-icon" aria-hidden="true">02</span>
+          <h3>經營會議升級</h3>
+          <p>用 AI 協助整理資料、追蹤待辦、分析異常，讓會議從報告進度轉向解決問題與做出決策。</p>
+        </article>
+        <article class="feature-card">
+          <span class="line-icon" aria-hidden="true">03</span>
+          <h3>主管日常管理</h3>
+          <p>建立主管常用提示詞、報告模板與追蹤節奏，讓 AI 成為每日、每週、每月的管理助理。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="course" class="section course-section">
+      <div class="course-layout">
+        <div class="section-heading align-left">
+          <p class="eyebrow">Featured Course</p>
+          <h2>AI 年度計畫與公司經營實作課</h2>
+          <p>參考大自然木匠工坊的課程型頁面設計，本頁以「可以帶回公司使用」為核心：每個單元都對應一個管理場景、一份產出文件與一組可重複使用的 AI 提示詞。</p>
+        </div>
+
+        <article class="course-card">
+          <div class="course-top">
+            <div>
+              <p class="course-label">企業 AI 導入課程</p>
+              <h3>從年度計畫到日常經營的 AI 管理系統</h3>
+            </div>
+            <div class="price">
+              <span>課程形式</span>
+              <strong>企業內訓／顧問輔導</strong>
+            </div>
+          </div>
+
+          <div class="course-info">
+            <div>
+              <span>適合對象</span>
+              <p>企業經營者、總經理、幕僚長、部門主管，以及負責年度計畫、經營分析、數位轉型的團隊。</p>
+            </div>
+            <div>
+              <span>核心成果</span>
+              <p>帶回可執行的年度計畫 AI 模板、經營會議 AI 流程、主管日常管理提示詞與追蹤表。</p>
+            </div>
+          </div>
+
+          <div class="teaching-points">
+            <h4>課程重點</h4>
+            <ul>
+              <li>年度目標拆解與策略地圖整理</li>
+              <li>部門工作計畫、責任人與時程設計</li>
+              <li>營收、成本、庫存、品質與人力問題分析</li>
+              <li>經營會議紀錄、待辦、追蹤與回報</li>
+            </ul>
+          </div>
+
+          <div class="design-note">
+            <h4>教學定位</h4>
+            <p>課程不是單純示範 ChatGPT 或 AI 工具，而是將李家群過去建構經營管理系統、年度計畫與企業輔導的經驗，轉成企業可以導入的 AI 工作流程。</p>
+          </div>
+
+          <div class="schedule-wrap" aria-label="課程安排">
+            <div class="schedule-card">
+              <h4>前期盤點</h4>
+              <dl>
+                <div><dt>資料</dt><dd>年度計畫、組織分工、會議制度與既有報表</dd></div>
+                <div><dt>任務</dt><dd>找出最適合 AI 先介入的管理流程</dd></div>
+                <div><dt>成果</dt><dd>一份 AI 導入優先順序與試跑範圍</dd></div>
+              </dl>
+            </div>
+            <div class="schedule-card">
+              <h4>後期導入</h4>
+              <dl>
+                <div><dt>模板</dt><dd>提示詞、追蹤表、會議記錄與決策摘要</dd></div>
+                <div><dt>試跑</dt><dd>選定部門或經營主線進行一個月運作</dd></div>
+                <div><dt>擴大</dt><dd>逐步推進到公司級經營管理系統</dd></div>
+              </dl>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="system" class="section system-section">
+      <div class="section-heading">
+        <p class="eyebrow">Management System</p>
+        <h2>三個 AI 經營管理模組</h2>
+        <p>把企業經營拆成可操作的模組，讓 AI 能進入計畫、執行、檢討與改善的循環。</p>
+      </div>
+      <div class="system-grid">
+        <article class="system-card">
+          <h3>一、年度計畫模組</h3>
+          <p>協助公司把年度目標拆解到部門與月份，形成可追蹤的行動計畫。</p>
+          <ul>
+            <li>年度策略主題整理</li>
+            <li>KPI 與行動方案對齊</li>
+            <li>月度里程碑與檢討格式</li>
+          </ul>
+        </article>
+        <article class="system-card">
+          <h3>二、經營會議模組</h3>
+          <p>把例行會議變成資料摘要、問題分析、決策紀錄與後續追蹤的閉環。</p>
+          <ul>
+            <li>會前資料摘要</li>
+            <li>異常原因與改善方案</li>
+            <li>會後待辦與責任追蹤</li>
+          </ul>
+        </article>
+        <article class="system-card">
+          <h3>三、主管工作流模組</h3>
+          <p>建立主管每天、每週、每月可以重複使用的 AI 管理工作流程。</p>
+          <ul>
+            <li>主管提示詞範本</li>
+            <li>跨部門報告格式</li>
+            <li>AI 導入 SOP 與權責檢核</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section roadmap-section">
+      <div class="section-heading">
+        <p class="eyebrow">Implementation Roadmap</p>
+        <h2>企業導入路線</h2>
+        <p>從小範圍試跑開始，避免一次把 AI 導入變成大型專案，而是先讓一條經營主線跑出成果。</p>
+      </div>
+      <div class="roadmap-grid">
+        <article class="roadmap-card">
+          <span>1</span>
+          <h3>盤點現況</h3>
+          <p>整理年度計畫、會議制度、報表資料與主管常見管理痛點。</p>
+        </article>
+        <article class="roadmap-card">
+          <span>2</span>
+          <h3>建立模板</h3>
+          <p>產出目標拆解、問題分析、會議紀錄與行動追蹤的 AI 模板。</p>
+        </article>
+        <article class="roadmap-card">
+          <span>3</span>
+          <h3>部門試跑</h3>
+          <p>選定一個部門或一條經營主線，進行一個月的實際運作。</p>
+        </article>
+        <article class="roadmap-card">
+          <span>4</span>
+          <h3>制度擴大</h3>
+          <p>檢討成效後，擴大到公司級經營會議與年度管理循環。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="profile" class="section profile-section">
+      <div class="profile-layout">
+        <article class="profile-card">
+          <img src="assets/li-jiaqun-home.png" alt="李家群手持麥克風照片">
+          <div class="profile-body">
+            <p class="eyebrow">Instructor</p>
+            <h2>李家群</h2>
+            <p>具備 FMCG 事業幕僚、品質管理、企業管理與運輸管理背景，能以國語、台語與英語溝通。</p>
+            <ul class="identity-list">
+              <li><strong>地區</strong><span>台灣（Taiwan, R.O.C.）</span></li>
+              <li><strong>家庭</strong><span>已婚，育有二女，家庭美滿</span></li>
+            </ul>
+          </div>
+        </article>
+
+        <div class="experience-grid">
+          <article class="experience-card">
+            <h3>學歷與教學</h3>
+            <ul>
+              <li>交通大學運輸工程與管理學系</li>
+              <li>中原大學企業管理研究所</li>
+              <li>品質管理師（CPC 發證）</li>
+              <li>天津財經學院 MBA 客座教授</li>
+            </ul>
+          </article>
+          <article class="experience-card">
+            <h3>工作經歷</h3>
+            <ul>
+              <li>長春實業紙櫃生產銷售（11 年）</li>
+              <li>英業達管理中心與駐外代表（北京、印度）</li>
+              <li>康師傅高階經營管理（11 年）</li>
+              <li>APP（中國）造紙企業</li>
+            </ul>
+          </article>
+          <article class="experience-card">
+            <h3>經營系統架構</h3>
+            <ul>
+              <li>康師傅控股經營系統</li>
+              <li>台灣味全、上海味全冷藏年度計畫與會議系統</li>
+              <li>上海頂通物流、APP 經營管理系統</li>
+              <li>光洋應用材料、君樂寶乳業經營系統</li>
+            </ul>
+          </article>
+          <article class="experience-card">
+            <h3>輔導與國際經驗</h3>
+            <ul>
+              <li>光洋應用材料、君樂寶乳業等企業輔導</li>
+              <li>完成 5 件國際併購案，5.1 億美金進入中國</li>
+              <li>著作：《投資中國》（1－3 期）</li>
+              <li>在中國待了 18 年</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" class="section booking-section">
+      <div class="booking-layout">
+        <div class="booking-copy">
+          <p class="eyebrow">Booking</p>
+          <h2>洽詢 AI 經營教學與企業內訓</h2>
+          <p>如果企業希望把 AI 導入年度計畫、經營會議或主管日常管理，可以先以一個部門或一條經營主線作為試跑範圍。</p>
+          <div class="contact-note">
+            <span>建議準備資料</span>
+            <strong>年度計畫、例行會議資料、部門 KPI、常用報表</strong>
+            <span>導入方式</span>
+            <strong>企業內訓、工作坊、顧問輔導</strong>
+          </div>
+        </div>
+
+        <div class="booking-panel">
+          <h3>可討論的合作內容</h3>
+          <ul>
+            <li>AI 年度計畫拆解工作坊</li>
+            <li>AI 經營會議流程設計</li>
+            <li>主管 AI 管理提示詞訓練</li>
+            <li>公司級 AI 經營管理系統導入</li>
+          </ul>
+          <a class="btn primary" href="#top">回到頁首查看課程定位</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <span class="brand-mark">李</span>
+      <strong>李家群 AI 經營教學</strong>
+    </div>
+    <span>用 AI 落實年度計畫與公司經營</span>
+    <nav aria-label="頁尾連結">
+      <a href="#course">課程內容</a>
+      <a href="#profile">講師背景</a>
+    </nav>
+  </footer>
+</body>
+</html>
