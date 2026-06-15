@@ -441,6 +441,185 @@
       background: var(--white);
     }
 
+    .architecture-section {
+      background: #fffaf1;
+    }
+
+    .architecture-panel {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--plain-white);
+      box-shadow: var(--shadow);
+    }
+
+    .arch-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .arch-top h3 {
+      margin-bottom: 6px;
+    }
+
+    .arch-top p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .arch-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .arch-tab {
+      min-height: 38px;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fffdf8;
+      color: var(--walnut);
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .arch-tab:hover,
+    .arch-tab:focus-visible {
+      border-color: var(--forest);
+      outline: none;
+    }
+
+    .arch-tab.active {
+      color: var(--plain-white);
+      border-color: var(--forest);
+      background: var(--forest);
+    }
+
+    .arch-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 22px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      background: #fffdf8;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .arch-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .arch-legend i {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .arch-canvas {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .arch-canvas svg {
+      display: block;
+      width: 100%;
+      min-width: 680px;
+      height: auto;
+    }
+
+    .arch-node {
+      cursor: pointer;
+    }
+
+    .arch-node rect,
+    .arch-node path {
+      transition: opacity 0.2s ease, filter 0.2s ease;
+    }
+
+    .arch-node:hover rect,
+    .arch-node:focus rect {
+      filter: drop-shadow(0 3px 6px rgba(36, 20, 14, 0.18));
+      opacity: 0.92;
+    }
+
+    .arch-detail {
+      display: none;
+      margin-top: 22px;
+      padding: 22px;
+      border: 1px solid rgba(31, 74, 55, 0.18);
+      border-left: 4px solid var(--forest);
+      border-radius: 8px;
+      background: #fffdf8;
+    }
+
+    .arch-detail.visible {
+      display: block;
+    }
+
+    .arch-detail-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 10px;
+    }
+
+    .arch-detail h3 {
+      margin-bottom: 0;
+    }
+
+    .arch-detail p {
+      color: var(--muted);
+    }
+
+    .arch-close {
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--plain-white);
+      color: var(--muted);
+      font: inherit;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .arch-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .arch-tags span {
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--plain-white);
+      color: var(--forest-dark);
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
     .roadmap-section {
       background: linear-gradient(135deg, rgba(223, 199, 162, 0.28), rgba(31, 74, 55, 0.08));
     }
@@ -634,8 +813,13 @@
       .feature-grid,
       .course-layout,
       .booking-layout,
-      .profile-layout {
+      .profile-layout,
+      .arch-top {
         grid-template-columns: 1fr;
+      }
+
+      .arch-tabs {
+        justify-content: flex-start;
       }
 
       .system-grid,
@@ -687,10 +871,16 @@
       .course-card,
       .feature-card,
       .system-card,
+      .architecture-panel,
       .booking-panel,
       .experience-card,
       .roadmap-card {
         padding: 22px;
+      }
+
+      .arch-canvas {
+        margin-inline: -10px;
+        width: calc(100% + 20px);
       }
 
       .course-top {
@@ -727,6 +917,7 @@
         <a href="#about">教學定位</a>
         <a href="#course">課程內容</a>
         <a href="#system">經營系統</a>
+        <a href="#architecture">架構圖</a>
         <a href="#profile">講師背景</a>
         <a href="#booking">課程洽詢</a>
       </div>
@@ -876,6 +1067,170 @@
       </div>
     </section>
 
+    <section id="architecture" class="section architecture-section">
+      <div class="section-heading">
+        <p class="eyebrow">System Architecture</p>
+        <h2>系統建構與優化循環架構</h2>
+        <p>將願景、策略、組織、KPI、經營檢討與 e 化串成企業管理主軸，並同時連動績效文化與制度管理兩個循環。</p>
+      </div>
+
+      <div class="architecture-panel">
+        <div class="arch-top">
+          <div>
+            <h3>企業運作發展架構</h3>
+            <p>點擊圖表節點可查看說明；手機瀏覽時可左右滑動圖表。</p>
+          </div>
+          <div class="arch-tabs" aria-label="架構圖檢視切換">
+            <button class="arch-tab active" type="button" data-arch-view="all">完整架構</button>
+            <button class="arch-tab" type="button" data-arch-view="left">績效文化循環</button>
+            <button class="arch-tab" type="button" data-arch-view="center">核心縱軸</button>
+            <button class="arch-tab" type="button" data-arch-view="right">制度管理循環</button>
+          </div>
+        </div>
+
+        <div class="arch-legend">
+          <span><i style="background:#E8872A"></i>核心縱軸</span>
+          <span><i style="background:#3B7FD4"></i>績效文化</span>
+          <span><i style="background:#2E9E6E"></i>制度管理</span>
+          <span><i style="background:#7B5EA7"></i>e 化系統</span>
+        </div>
+
+        <div class="arch-canvas">
+          <svg viewBox="0 0 680 560" role="img" aria-labelledby="arch-title arch-desc">
+            <title id="arch-title">系統建構與優化循環架構圖</title>
+            <desc id="arch-desc">企業管理系統雙循環架構，包含核心縱軸、績效文化循環與制度管理循環。</desc>
+            <defs>
+              <marker id="arch-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </marker>
+            </defs>
+
+            <ellipse cx="200" cy="320" rx="170" ry="175" fill="none" stroke="#3B7FD4" stroke-width="1" stroke-dasharray="6 4" opacity="0.35"/>
+            <ellipse cx="500" cy="320" rx="165" ry="175" fill="none" stroke="#2E9E6E" stroke-width="1" stroke-dasharray="6 4" opacity="0.35"/>
+
+            <g class="arch-node" id="arch-n-vision" data-arch-id="vision" tabindex="0">
+              <rect x="278" y="22" width="124" height="44" rx="8" fill="#E8872A" stroke="#C06A18" stroke-width="0.5"/>
+              <text font-size="14" font-weight="500" fill="#fff" x="340" y="48" text-anchor="middle" dominant-baseline="central">願景使命</text>
+            </g>
+            <line x1="340" y1="66" x2="340" y2="100" stroke="#C06A18" stroke-width="1.5" marker-end="url(#arch-arr)"/>
+
+            <g class="arch-node" id="arch-n-strategy" data-arch-id="strategy" tabindex="0">
+              <rect x="278" y="100" width="124" height="44" rx="8" fill="#E8872A" stroke="#C06A18" stroke-width="0.5"/>
+              <text font-size="14" font-weight="500" fill="#fff" x="340" y="126" text-anchor="middle" dominant-baseline="central">策略 / 目標</text>
+            </g>
+            <line x1="340" y1="144" x2="340" y2="178" stroke="#C06A18" stroke-width="1.5" marker-end="url(#arch-arr)"/>
+
+            <g class="arch-node" id="arch-n-org" data-arch-id="org" tabindex="0">
+              <rect x="264" y="178" width="152" height="52" rx="8" fill="#E8872A" stroke="#C06A18" stroke-width="1.5"/>
+              <text font-size="15" font-weight="500" fill="#fff" x="340" y="208" text-anchor="middle" dominant-baseline="central">組織 / 職掌</text>
+            </g>
+            <line x1="340" y1="230" x2="340" y2="266" stroke="#C06A18" stroke-width="1.5" marker-end="url(#arch-arr)"/>
+
+            <g class="arch-node" id="arch-n-kpi" data-arch-id="kpi" tabindex="0">
+              <rect x="278" y="266" width="124" height="44" rx="8" fill="#E8872A" stroke="#C06A18" stroke-width="0.5"/>
+              <text font-size="14" font-weight="500" fill="#fff" x="340" y="292" text-anchor="middle" dominant-baseline="central">KPI</text>
+            </g>
+            <line x1="340" y1="310" x2="340" y2="346" stroke="#C06A18" stroke-width="1.5" marker-end="url(#arch-arr)"/>
+
+            <g class="arch-node" id="arch-n-review" data-arch-id="review" tabindex="0">
+              <rect x="278" y="346" width="124" height="44" rx="8" fill="#E8872A" stroke="#C06A18" stroke-width="0.5"/>
+              <text font-size="14" font-weight="500" fill="#fff" x="340" y="372" text-anchor="middle" dominant-baseline="central">經營檢討</text>
+            </g>
+            <line x1="340" y1="390" x2="340" y2="426" stroke="#C06A18" stroke-width="1.5" marker-end="url(#arch-arr)"/>
+
+            <g class="arch-node" id="arch-n-etech" data-arch-id="etech" tabindex="0">
+              <rect x="278" y="426" width="124" height="44" rx="8" fill="#7B5EA7" stroke="#5C4080" stroke-width="0.5"/>
+              <text font-size="14" font-weight="500" fill="#fff" x="340" y="452" text-anchor="middle" dominant-baseline="central">e化</text>
+            </g>
+
+            <g class="arch-node" id="arch-n-talent" data-arch-id="talent" tabindex="0">
+              <rect x="50" y="178" width="106" height="52" rx="6" fill="#3B7FD4" stroke="#1E5FA8" stroke-width="0.5"/>
+              <text font-size="12" font-weight="500" fill="#fff" x="103" y="198" text-anchor="middle" dominant-baseline="central">職位評價</text>
+              <text font-size="12" font-weight="500" fill="#fff" x="103" y="218" text-anchor="middle" dominant-baseline="central">人才規格</text>
+            </g>
+            <g class="arch-node" id="arch-n-jobdesc" data-arch-id="jobdesc" tabindex="0">
+              <rect x="166" y="186" width="90" height="36" rx="6" fill="#3B7FD4" stroke="#1E5FA8" stroke-width="0.5"/>
+              <text font-size="12" font-weight="500" fill="#fff" x="211" y="207" text-anchor="middle" dominant-baseline="central">崗位說明</text>
+            </g>
+            <g class="arch-node" id="arch-n-perf" data-arch-id="perf" tabindex="0">
+              <rect x="50" y="270" width="106" height="36" rx="6" fill="#3B7FD4" stroke="#1E5FA8" stroke-width="0.5"/>
+              <text font-size="12" font-weight="500" fill="#fff" x="103" y="291" text-anchor="middle" dominant-baseline="central">個人績效</text>
+            </g>
+            <g class="arch-node" id="arch-n-reward" data-arch-id="reward" tabindex="0">
+              <rect x="50" y="346" width="106" height="52" rx="6" fill="#3B7FD4" stroke="#1E5FA8" stroke-width="0.5"/>
+              <text font-size="12" font-weight="500" fill="#fff" x="103" y="366" text-anchor="middle" dominant-baseline="central">績效考核</text>
+              <text font-size="12" font-weight="500" fill="#fff" x="103" y="384" text-anchor="middle" dominant-baseline="central">獎酬, 訓練</text>
+            </g>
+            <g class="arch-node" id="arch-n-perf-e" data-arch-id="perf-e" tabindex="0">
+              <rect x="50" y="490" width="180" height="34" rx="17" fill="none" stroke="#3B7FD4" stroke-width="1" stroke-dasharray="5 3"/>
+              <text font-size="12" fill="#3B7FD4" x="140" y="511" text-anchor="middle" dominant-baseline="central">績效文化專案 e化</text>
+            </g>
+            <line x1="156" y1="204" x2="166" y2="204" stroke="#3B7FD4" stroke-width="1" marker-end="url(#arch-arr)"/>
+            <line x1="256" y1="204" x2="264" y2="204" stroke="#3B7FD4" stroke-width="1" marker-end="url(#arch-arr)"/>
+            <line x1="264" y1="292" x2="158" y2="291" stroke="#3B7FD4" stroke-width="1" marker-end="url(#arch-arr)"/>
+            <line x1="103" y1="306" x2="103" y2="346" stroke="#3B7FD4" stroke-width="1" marker-end="url(#arch-arr)"/>
+            <line x1="156" y1="372" x2="278" y2="372" stroke="#3B7FD4" stroke-width="1" marker-end="url(#arch-arr)"/>
+            <path d="M103 398 L103 440 Q103 460 90 460 L60 460 Q44 460 44 230 Q44 204 50 204" fill="none" stroke="#3B7FD4" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arch-arr)" opacity="0.5"/>
+
+            <g class="arch-node" id="arch-n-manual" data-arch-id="manual" tabindex="0">
+              <rect x="424" y="186" width="90" height="36" rx="6" fill="#2E9E6E" stroke="#1A6E4A" stroke-width="0.5"/>
+              <text font-size="12" font-weight="500" fill="#fff" x="469" y="207" text-anchor="middle" dominant-baseline="central">手冊</text>
+            </g>
+            <g class="arch-node" id="arch-n-process" data-arch-id="process" tabindex="0">
+              <rect x="418" y="270" width="96" height="36" rx="6" fill="#2E9E6E" stroke="#1A6E4A" stroke-width="0.5"/>
+              <text font-size="12" font-weight="500" fill="#fff" x="466" y="291" text-anchor="middle" dominant-baseline="central">程序, 流程</text>
+            </g>
+            <g class="arch-node" id="arch-n-policy" data-arch-id="policy" tabindex="0">
+              <rect x="524" y="270" width="92" height="36" rx="6" fill="#2E9E6E" stroke="#1A6E4A" stroke-width="0.5"/>
+              <text font-size="12" font-weight="500" fill="#fff" x="570" y="291" text-anchor="middle" dominant-baseline="central">辦法, 規定</text>
+            </g>
+            <g class="arch-node" id="arch-n-form" data-arch-id="form" tabindex="0">
+              <rect x="600" y="178" width="68" height="36" rx="6" fill="#2E9E6E" stroke="#1A6E4A" stroke-width="0.5"/>
+              <text font-size="12" font-weight="500" fill="#fff" x="634" y="199" text-anchor="middle" dominant-baseline="central">作業表單</text>
+            </g>
+            <g class="arch-node" id="arch-n-stat" data-arch-id="stat" tabindex="0">
+              <rect x="600" y="348" width="68" height="36" rx="6" fill="#2E9E6E" stroke="#1A6E4A" stroke-width="0.5"/>
+              <text font-size="12" font-weight="500" fill="#fff" x="634" y="369" text-anchor="middle" dominant-baseline="central">統計表單</text>
+            </g>
+            <g class="arch-node" id="arch-n-meeting" data-arch-id="meeting" tabindex="0">
+              <rect x="424" y="348" width="96" height="36" rx="6" fill="#2E9E6E" stroke="#1A6E4A" stroke-width="0.5"/>
+              <text font-size="12" font-weight="500" fill="#fff" x="472" y="369" text-anchor="middle" dominant-baseline="central">會議管理</text>
+            </g>
+            <g class="arch-node" id="arch-n-mis" data-arch-id="mis" tabindex="0">
+              <rect x="424" y="490" width="244" height="34" rx="17" fill="none" stroke="#2E9E6E" stroke-width="1" stroke-dasharray="5 3"/>
+              <text font-size="12" fill="#2E9E6E" x="546" y="511" text-anchor="middle" dominant-baseline="central">MIS專案 e化</text>
+            </g>
+            <line x1="416" y1="204" x2="424" y2="204" stroke="#2E9E6E" stroke-width="1" marker-end="url(#arch-arr)"/>
+            <line x1="514" y1="204" x2="600" y2="199" stroke="#2E9E6E" stroke-width="1" marker-end="url(#arch-arr)"/>
+            <line x1="634" y1="214" x2="634" y2="348" stroke="#2E9E6E" stroke-width="1" marker-end="url(#arch-arr)"/>
+            <line x1="402" y1="291" x2="418" y2="291" stroke="#2E9E6E" stroke-width="1" marker-end="url(#arch-arr)"/>
+            <line x1="402" y1="291" x2="522" y2="291" stroke="#2E9E6E" stroke-width="1" marker-end="url(#arch-arr)" opacity="0.6"/>
+            <line x1="600" y1="366" x2="520" y2="366" stroke="#2E9E6E" stroke-width="1" marker-end="url(#arch-arr)"/>
+            <line x1="424" y1="366" x2="402" y2="366" stroke="#2E9E6E" stroke-width="1" marker-end="url(#arch-arr)"/>
+            <path d="M634 384 L634 440 Q634 460 650 460 L660 460 Q668 460 668 204 Q668 186 668 186" fill="none" stroke="#2E9E6E" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+
+            <circle cx="424" cy="207" r="9" fill="#1A6E4A"/>
+            <text font-size="11" font-weight="500" fill="#fff" x="424" y="211" text-anchor="middle" dominant-baseline="central">1</text>
+            <circle cx="418" cy="280" r="9" fill="#1A6E4A"/>
+            <text font-size="11" font-weight="500" fill="#fff" x="418" y="284" text-anchor="middle" dominant-baseline="central">2</text>
+            <circle cx="524" cy="280" r="9" fill="#1A6E4A"/>
+            <text font-size="11" font-weight="500" fill="#fff" x="524" y="284" text-anchor="middle" dominant-baseline="central">3</text>
+            <circle cx="600" cy="189" r="9" fill="#1A6E4A"/>
+            <text font-size="11" font-weight="500" fill="#fff" x="600" y="193" text-anchor="middle" dominant-baseline="central">4</text>
+          </svg>
+        </div>
+
+        <div class="arch-detail" id="arch-detail-panel">
+          <div class="arch-detail-head">
+            <h3 id="arch-detail-title"></h3>
+            <button class="arch-close" type="button" id="arch-detail-close">關閉</button>
+          </div>
+          <p id="arch-detail-desc"></p>
+          <div class="arch-tags" id="arch-detail-tags"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="section roadmap-section">
       <div class="section-heading">
         <p class="eyebrow">Implementation Roadmap</p>
@@ -1001,5 +1356,74 @@
       <a href="#profile">講師背景</a>
     </nav>
   </footer>
+  <script>
+    const architectureData = {
+      vision: { title: "願景使命", desc: "企業的最高層次定義，確立公司存在的目的與方向，是整個系統的起點與驅動力。包含技術 / IP 藍圖、產品 / 產能藍圖、事業發展藍圖三個維度。", tags: ["技術 / IP 藍圖", "產品 / 產能藍圖", "事業發展藍圖"] },
+      strategy: { title: "策略 / 目標", desc: "將願景轉化為具體可執行的策略方向與量化目標，形成公司年度與中長期規劃的核心框架。", tags: ["年度目標", "中長期策略", "量化指標", "資源配置"] },
+      org: { title: "組織 / 職掌", desc: "完成組織執掌確認，各功能制度體系重新解構。包含部門使命、組織結構、職掌權限三大手冊要素。", tags: ["部門使命", "組織結構", "職掌權限", "制度審議"] },
+      kpi: { title: "KPI", desc: "關鍵績效指標體系，連接策略目標與個人執行，向左驅動個人績效考核，向右觸發制度程序運作。", tags: ["部門 KPI", "個人 KPI", "量化指標", "追蹤機制"] },
+      review: { title: "經營檢討", desc: "定期彙整 KPI 結果，進行跨部門的經營分析與檢討，作為策略調整與 e 化推進的依據。", tags: ["月度檢討", "季度分析", "跨部門彙報", "改善行動"] },
+      etech: { title: "e 化", desc: "數位化轉型的落地端，將績效文化專案與 MIS 制度管理系統整合，實現數據驅動的企業管理閉環。", tags: ["績效文化 e 化", "MIS 系統", "數位轉型", "自動化流程"] },
+      talent: { title: "職位評價 / 人才規格", desc: "定義各崗位的職責等級與人才能力要求，作為招募、晉升與培訓的基礎標準。", tags: ["職級架構", "能力模型", "人才盤點", "晉升標準"] },
+      jobdesc: { title: "崗位說明", desc: "每個職位的詳細職責描述，包含工作內容、匯報關係與績效衡量標準，連接職位評價與組織架構。", tags: ["職責描述", "匯報關係", "工作標準", "績效指標"] },
+      perf: { title: "個人績效", desc: "由組織 KPI 逐層分解到個人的績效目標設定，是績效文化落地的關鍵環節。", tags: ["目標分解", "個人 OKR", "績效計劃", "進度追蹤"] },
+      reward: { title: "績效考核 / 獎酬, 訓練", desc: "定期對個人績效進行評估，連動薪酬獎勵與能力培訓計劃，形成完整的人才發展閉環。", tags: ["考核週期", "獎金制度", "培訓計劃", "能力發展"] },
+      "perf-e": { title: "績效文化專案 e 化", desc: "績效管理數位化專案，將職位評價、崗位說明、個人績效、考核獎酬全流程納入系統管理。", tags: ["HR 系統", "績效平台", "數位考核", "自動化報表"] },
+      manual: { title: "手冊（制度文件 1）", desc: "制度管理的第一層級，定義各部門的使命、組織結構與職掌權限，是制度體系的基礎文件。", tags: ["部門使命", "組織結構圖", "職掌權限", "制度基礎"] },
+      process: { title: "程序, 流程（2）", desc: "制度管理第二層級，描述業務活動的執行步驟與工作流程，確保跨部門協作的一致性。", tags: ["業務程序", "工作流程", "SOP", "跨部門協作"] },
+      policy: { title: "辦法, 規定（3）", desc: "制度管理第三層級，制定各類業務場景的管理辦法與執行規定，是制度體系的執行依據。", tags: ["管理辦法", "執行規定", "制度審議", "合規要求"] },
+      form: { title: "作業表單（4）", desc: "制度管理第四層級，標準化各類業務表單與作業工具，支持程序流程的落地執行。", tags: ["標準表單", "作業工具", "填寫規範", "歸檔管理"] },
+      stat: { title: "統計表單", desc: "收集各業務環節的數據報表，為經營檢討提供量化分析依據，與 MIS 系統深度整合。", tags: ["數據統計", "業務報表", "數據分析", "MIS 整合"] },
+      meeting: { title: "會議管理", desc: "規範各類會議的召開標準、議程設計與決議追蹤，確保經營檢討的質量與執行效率。", tags: ["會議規範", "議程管理", "決議追蹤", "會議紀錄"] },
+      mis: { title: "MIS 專案 e 化", desc: "管理資訊系統數位化，整合手冊、程序流程、辦法規定、作業表單與統計表單，實現制度管理的全面數位化。", tags: ["管理資訊系統", "制度數位化", "數據整合", "系統自動化"] }
+    };
+
+    const architectureGroups = {
+      left: ["arch-n-talent", "arch-n-jobdesc", "arch-n-perf", "arch-n-reward", "arch-n-perf-e"],
+      center: ["arch-n-vision", "arch-n-strategy", "arch-n-org", "arch-n-kpi", "arch-n-review", "arch-n-etech"],
+      right: ["arch-n-manual", "arch-n-process", "arch-n-policy", "arch-n-form", "arch-n-stat", "arch-n-meeting", "arch-n-mis"]
+    };
+
+    function showArchitectureDetail(id) {
+      const detail = architectureData[id];
+      if (!detail) return;
+      document.getElementById("arch-detail-title").textContent = detail.title;
+      document.getElementById("arch-detail-desc").textContent = detail.desc;
+      document.getElementById("arch-detail-tags").innerHTML = detail.tags.map((tag) => `<span>${tag}</span>`).join("");
+      document.getElementById("arch-detail-panel").classList.add("visible");
+    }
+
+    function setArchitectureView(view) {
+      const allNodes = [...architectureGroups.left, ...architectureGroups.center, ...architectureGroups.right];
+      const activeNodes = view === "all" ? allNodes : architectureGroups[view];
+
+      allNodes.forEach((id) => {
+        const node = document.getElementById(id);
+        if (node) node.style.opacity = activeNodes.includes(id) ? "1" : "0.16";
+      });
+    }
+
+    document.querySelectorAll(".arch-node").forEach((node) => {
+      node.addEventListener("click", () => showArchitectureDetail(node.dataset.archId));
+      node.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          showArchitectureDetail(node.dataset.archId);
+        }
+      });
+    });
+
+    document.querySelectorAll(".arch-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".arch-tab").forEach((item) => item.classList.remove("active"));
+        tab.classList.add("active");
+        setArchitectureView(tab.dataset.archView);
+      });
+    });
+
+    document.getElementById("arch-detail-close").addEventListener("click", () => {
+      document.getElementById("arch-detail-panel").classList.remove("visible");
+    });
+  </script>
 </body>
 </html>
